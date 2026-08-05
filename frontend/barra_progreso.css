@@ -1,0 +1,15 @@
+:root {
+    --blue: #0091d9;
+    --yellow: #ffe605;
+}
+
+#barra-progreso {
+  position: fixed;      /* se queda pegada aunque hagas scroll */
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%;            /* empieza en 0 */
+  background: var(--blue);  /* el color de tu marca */
+  z-index: 9999;        /* siempre por encima de todo */
+  transition: width 0.1s linear;
+}

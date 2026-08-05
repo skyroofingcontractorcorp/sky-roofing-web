@@ -1,0 +1,226 @@
+@font-face {
+    font-family: 'AGRESSIVE';
+    src: url(assets/fonts/agressive/AGRESSIVE.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter-Light-BETA.otf';
+    src: url('assets/fonts/Inter-Light-BETA.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+  --blue: #0091d9;
+  --yellow: #ffe605;
+
+  --sky-dark: #0f1620;      /* fondo profundo */
+  --sky-panel: #182430;     /* tarjetas */
+  --sky-accent: #f5a623;    /* dorado/ámbar del logo */
+  --sky-accent-2: #ffd27d;  /* highlight metálico */
+  --sky-text: #e8edf2;
+  --sky-muted: #9fb0c0;
+  --sky-line: rgba(255, 255, 255, 0.08);
+}
+
+#about-us {
+  background: url('assets/fondo_gemini.png') no-repeat center 40%;
+  background-size: cover;
+  color: var(--sky-text);
+  padding: 6rem 1.5rem;
+}
+
+.about-us-content {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+#about-us h2 {
+  font-family: 'AGRESSIVE', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  text-align: center;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, var(--sky-accent-2), var(--sky-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 0 0 2.5rem;
+}
+
+#about-us h3 {
+  font-family: 'AGRESSIVE', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--sky-dark);
+  margin: 3.5rem 0 1.75rem;
+  position: relative;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#about-us h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  bottom: 0.15em;
+  width: 5px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--sky-accent-2), var(--sky-accent));
+}
+#about-us h3::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0.15em;
+  bottom: 0.15em;
+  width: 5px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--sky-accent-2), var(--sky-accent));
+}
+
+#about-us h4 {
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--sky-accent);
+  margin: 0 0 0.6rem;
+}
+
+#about-us p {
+  font-family: 'Inter-Light-BETA.otf', sans-serif;
+  line-height: 1.7;
+  margin: 0 0 1rem;
+}
+
+.about-us-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.about-us-boxes p {
+  color: var(--sky-dark);
+  line-height: 1.6;
+  margin: 0;
+}
+.about-us-boxes > h3 {
+  grid-column: 1 / -1;
+  margin: 0 0 0.5rem;
+}
+
+.about-us-boxes > p {
+  grid-column: 1 / -1;
+  margin: 0 0 1rem;
+  max-width: 780px;
+}
+
+.about-us-box {
+  background: var(--sky-panel);
+  border: 1px solid var(--sky-line);
+  border-radius: 14px;
+  padding: 1.75rem 1.5rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-us-box:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245, 166, 35, 0.5);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.about-us-box p {
+  margin: 0;
+  color: var(--sky-text);
+  text-align: center;
+}
+
+.box {
+  background: var(--sky-panel);
+  border: 1px solid var(--sky-line);
+  border-left: 4px solid var(--sky-accent);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.25rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.box:hover {
+  transform: translateX(6px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+}
+
+.box p {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+}
+
+.box-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.box p span {
+  color: var(--sky-text);
+  line-height: 1.6;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 700px) {
+  #about-us {
+    padding: 4rem 1.25rem;
+  }
+
+  .box p {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .about-us-boxes {
+    grid-template-columns: 1fr; /* una sola columna en móvil */
+  }
+}
+
+.about-us-text-img {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.about-us-img {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 26px;
+  object-fit: cover;
+}
+
+.about-us-text {
+  max-width: 600px;
+  color: var(--sky-dark);
+  line-height: 1.7;
+  font-size: 20px;
+  max-width: 780px;
+  margin-bottom: 1rem;
+}
