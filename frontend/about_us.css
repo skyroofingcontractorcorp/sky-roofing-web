@@ -184,7 +184,6 @@
   line-height: 1.6;
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 700px) {
   #about-us {
     padding: 4rem 1.25rem;
@@ -197,7 +196,7 @@
   }
 
   .about-us-boxes {
-    grid-template-columns: 1fr; /* una sola columna en móvil */
+    grid-template-columns: 1fr;
   }
 }
 

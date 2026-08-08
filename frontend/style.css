@@ -42,7 +42,6 @@ body {
     color: var(--white);
 }
 
-/* Utilidad: contenido solo para lectores de pantalla (SEO + accesibilidad) */
 .sr-only {
     position: absolute;
     width: 1px; height: 1px;
@@ -158,8 +157,6 @@ a {
     text-align: center;
     padding: calc(var(--nav-h) + 2rem) 1.5rem clamp(2.5rem, 6vh, 4.5rem);
 }
-
-/* Imagen de fondo del hero (con leve zoom cinematográfico) */
 .hero::before {
     content: "";
     position: absolute;
@@ -170,8 +167,6 @@ a {
     animation: heroZoom 18s ease-out forwards;
     z-index: 0;
 }
-
-/* Velo degradado: oscuro arriba (navbar) y abajo (texto), claro al centro (marca) */
 .hero::after {
     content: "";
     position: absolute;
@@ -209,7 +204,6 @@ a {
 }
 .hero-eyebrow .hl { color: var(--yellow); font-weight: 700; }
 
-/* Barra de acento azul→amarillo (mismo lenguaje que el subrayado del navbar) */
 .hero-accent {
     display: block;
     width: 68px;
@@ -267,8 +261,6 @@ a {
     color: var(--yellow);
     border-color: var(--yellow);
 }
-
-/* Franja de confianza: credibilidad inmediata */
 .hero-trust {
     list-style: none;
     margin: 0.3rem 0 0;
@@ -293,7 +285,6 @@ a {
     opacity: 0.75;
 }
 
-/* ---------- Animaciones ---------- */
 @keyframes heroZoom {
     from { transform: scale(1.08); }
     to   { transform: scale(1.00); }
@@ -313,7 +304,6 @@ a {
     .hero-content > * { animation: none; }
 }
 
-/* ---------- Móvil ---------- */
 @media (max-width: 900px) {
     .nav-toggle { display: flex; }
     .nav-links {
@@ -349,7 +339,6 @@ a {
 
 .sky-wrap{max-width:1180px;margin:0 auto;}
  
-  /* Encabezado */
 .sky-eyebrow{
     display:inline-flex;
     align-items:center;
@@ -382,15 +371,11 @@ a {
 .sky-intro{
     max-width:620px;color:var(--muted);font-size:1.02rem;line-height:1.65;margin:0 0 52px;
 }
- 
-  /* Grid */
 .sky-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:18px;
 }
- 
-  /* Tarjeta con "corte de techo" en la esquina superior */
 .sky-card{
     position:relative;
     background:linear-gradient(180deg,var(--panel) 0%,var(--steel) 100%);
@@ -400,7 +385,7 @@ a {
     overflow:hidden;
     transition:transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s, background .35s;
 }
-.sky-card::after{ /* franja amarilla lateral */
+.sky-card::after{
     content:"";position:absolute;left:0;top:22px;bottom:0;width:4px;
     background:var(--yellow);opacity:.0;transition:opacity .35s;
 }
@@ -411,7 +396,6 @@ a {
 }
 .sky-card:hover::after{opacity:1;}
  
-  /* Tarjeta destacada (Roofing) ocupa 2 columnas */
 .sky-card.is-feature{grid-column:span 2;background:linear-gradient(120deg,#1c2530 0%,var(--steel) 70%);}
 .sky-card.is-feature .sky-card-desc{max-width:440px;}
  
@@ -426,7 +410,6 @@ a {
 }
 .sky-card-desc{color:var(--muted);font-size:.94rem;line-height:1.55;margin:0;}
  
-  /* Pie / CTA */
 .sky-foot{
     display:flex;align-items:center;justify-content:space-between;gap:24px;
     flex-wrap:wrap;margin-top:44px;padding-top:30px;border-top:1px solid var(--line);
@@ -444,7 +427,6 @@ a {
 .sky-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(255,198,26,.5);}
 .sky-btn:hover svg{transform:translateX(4px);}
  
-  /* Responsive */
 @media (max-width:860px){
     .sky-grid{grid-template-columns:repeat(2,1fr);}
     .sky-card.is-feature{grid-column:span 2;}
@@ -471,7 +453,7 @@ a:focus-visible,.sky-btn:focus-visible{outline:3px solid var(--blue);outline-off
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;      /* se apilan en pantallas chicas */
+    flex-wrap: wrap;
     padding: 40px 24px 60px;
     gap: 40px;
 }
@@ -612,6 +594,7 @@ footer {
 .footer-links {
     display: flex;
     flex-direction: column;
+    gap: 10px;
     margin-left: 40px;
 }
 
@@ -648,7 +631,7 @@ footer {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: var(--blue); /* Línea roja de acento */
+    background-color: var(--blue);
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
@@ -662,7 +645,7 @@ footer {
     display: flex;
     flex-direction: column;
     margin-left: 40px;
-    max-width: 320px; /* <- clave: evita que el texto invada la columna vecina */
+    max-width: 320px;
 }
 
 .footer-contact h4 {
@@ -676,13 +659,13 @@ footer {
 
 .footer-contact p {
     display: flex;
-    align-items: flex-start; /* el ícono queda arriba si el texto pasa a 2 líneas */
+    align-items: flex-start;
     gap: 8px;
     margin: 5px 0;
 }
 
 .footer-icon {
-    flex-shrink: 0; /* el ícono nunca se encoge ni se deforma */
+    flex-shrink: 0;
     width: 20px;
     height: 20px;
 }
@@ -690,12 +673,12 @@ footer {
 .footer-contact p span {
     flex: 1;
     font-family: 'Inter-Light-BETA.otf', sans-serif;
-    min-width: 0; /* permite que el texto haga wrap dentro de su espacio */
+    min-width: 0;
 }
 
 .footer-social {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     flex-direction: column;
 }
 
@@ -713,7 +696,7 @@ footer {
     width: 18px;
     height: 18px;
     object-fit: contain;
-    filter: brightness(0) invert(1); /* lo pone blanco, igual que en contact-social */
+    filter: brightness(0) invert(1);
     transition: filter 0.3s ease;
 }
 
