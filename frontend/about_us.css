@@ -215,6 +215,13 @@
   object-fit: cover;
 }
 
+.about-us-img video {
+  display: flex;
+  width: 100%;
+  max-width: 350px;
+  border-radius: 12px;
+}
+
 .about-us-text {
   max-width: 600px;
   color: var(--sky-dark);
