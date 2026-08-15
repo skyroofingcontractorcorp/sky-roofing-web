@@ -202,7 +202,7 @@ a {
     color: var(--white);
     text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
 }
-.hero-eyebrow .hl { color: var(--yellow); font-weight: 700; }
+.hero-eyebrow .hl { color: var(--blue); font-weight: 700; }
 
 .hero-accent {
     display: block;
@@ -240,13 +240,13 @@ a {
 .btn img { width: 20px; height: 20px; }
 
 .btn-primary {
-    background: var(--yellow);
+    background: var(--blue);
     color: var(--black);
-    box-shadow: 0 12px 26px rgba(255, 230, 5, 0.28);
+    box-shadow: 0 12px 26px rgba(5, 18, 255, 0.28);
 }
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 32px rgba(255, 230, 5, 0.40);
+    box-shadow: 0 16px 32px rgba(22, 5, 255, 0.4);
 }
 
 .btn-ghost {
@@ -520,11 +520,30 @@ a:focus-visible,.sky-btn:focus-visible{outline:3px solid var(--blue);outline-off
     --skew: -15deg;
     transform: skewX(var(--skew));
 }
+#testimonios {
+    background: radial-gradient(circle at 50% 50%, rgba(14, 15, 18, .85) 100%, rgba(14, 15, 18, .5) 200%),
+        url(assets/fondo_gemini_2.png) no-repeat center 100%;
+    background-size: cover;
+}
+.testimonio-inner h2 {
+    font-size: 52px;
+    font-family: 'AGRESSIVE', sans-serif;
+    background: linear-gradient(180deg, #ffe27a 0%, var(--yellow) 45%, #c98f04 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.testimonio-inner{max-width:1100px;margin-inline:auto;padding:4rem 1.25rem;text-align:center;}
+.testimonio-video video{
+    width:100%;max-width:320px;aspect-ratio:9/16;object-fit:cover;
+    border-radius:14px;background:#000;box-shadow:0 12px 30px rgba(0,0,0,.35);
+}
+
 #contact-us {
     display: flex;
     flex-direction: column;
     background: radial-gradient(circle at 78% 28%, rgba(14, 15, 18, .85) 0%, rgba(14, 15, 18, .5) 50%, transparent 150%),
-        url(assets/fondo_gemini_2.png) no-repeat center 100%;
+        url(assets/fondo_gemini_3.jpeg) no-repeat center 100%;
     background-size: cover;
     padding-bottom: 60px;
 }
@@ -573,7 +592,7 @@ a:focus-visible,.sky-btn:focus-visible{outline:3px solid var(--blue);outline-off
     font-size: 24px;
     letter-spacing: 1px;
     margin: 0 0 8px;
-    color: var(--yellow);
+    color: var(--blue);
 }
 .contact-social-btns {
     display: flex;
@@ -612,15 +631,15 @@ a:focus-visible,.sky-btn:focus-visible{outline:3px solid var(--blue);outline-off
 .contact-social-btn:hover,
 .contact-social-btn:focus-visible {
     transform: translateY(-3px);
-    border-color: var(--sky-accent);
+    border-color: var(--blue);
     background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
-    color: var(--sky-accent-2);
-    box-shadow: 0 12px 26px -10px rgba(245, 166, 35, .45);
+    color: var(--blue);
+    box-shadow: 0 12px 26px -10px rgba(35, 56, 245, 0.45);
 }
 
 .contact-social-btn:hover .contact-social-icon,
 .contact-social-btn:focus-visible .contact-social-icon {
-    filter: invert(84%) sepia(59%) saturate(1000%) hue-rotate(1deg) brightness(105%);
+    filter: invert(84%) saturate(1000%) hue-rotate(1deg) brightness(105%);
     transform: scale(1.1);
 }
 

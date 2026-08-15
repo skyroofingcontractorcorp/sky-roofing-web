@@ -1,0 +1,101 @@
+/* ============================================================
+   branding.css  —  ADDITIVE feature layer
+   Hero brand lockup + mascot "extra" + BebasKai display font.
+   Link this AFTER responsive.css. Never edit style.css.
+   ============================================================ */
+
+/* --- New display face added to /assets/fonts/bebas_kai --- */
+@font-face {
+    font-family: 'BebasKai';
+    src: url('assets/fonts/bebas_kai/BebasKai.otf') format('opentype'),
+         url('assets/fonts/bebas_kai/BebasKai.ttf')  format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ============================================================
+   1) HERO LOGO  (letras + mapache lockup)
+   Placed as the first child of .hero-content, so it inherits
+   the existing heroRise entrance animation automatically.
+   ============================================================ */
+.hero-logo {
+    display: block;
+    width: clamp(210px, 32vw, 360px);
+    height: auto;
+    margin-bottom: 0.2rem;
+    /* lifts the lockup off the photo without a hard box */
+    filter: drop-shadow(0 10px 26px rgba(0, 0, 0, 0.55))
+            drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Keep the lockup from eating the whole viewport on short screens */
+@media (max-height: 720px) {
+    .hero-logo { width: clamp(170px, 24vw, 280px); }
+}
+
+/* ============================================================
+   2) MASCOT EXTRA  (standalone mapache peeking at the CTA band)
+   Lives inside .contacto-rapido as a decorative aside.
+   ============================================================ */
+.contacto-rapido {
+    position: relative;   /* anchor for the absolute mascot */
+    overflow: hidden;     /* clip the peek to the band          */
+}
+
+.mascot-extra {
+    position: absolute;
+    right: clamp(8px, 3vw, 64px);
+    bottom: 0;
+    width: clamp(150px, 15vw, 220px);
+    line-height: 0;
+    pointer-events: none;
+    z-index: 1;
+    animation: mascotPeek 0.8s cubic-bezier(0.2, 0.8, 0.25, 1) both;
+}
+.mascot-extra img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.45));
+}
+
+/* Little BebasKai ribbon tucked over the mascot's shoulder.
+   Uses real brand copy ("Free Estimates") already promised in the hero. */
+.mascot-badge {
+    position: absolute;
+    top: 3%;
+    right: 2%;
+    transform: rotate(6deg);
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'BebasKai', 'Oswald', sans-serif;
+    font-size: clamp(0.85rem, 1.5vw, 1.15rem);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 0.28em 0.7em;
+    border-radius: 6px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes mascotPeek {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .mascot-extra { animation: none; }
+}
+
+/* Tablet: smaller corner peek, hide the ribbon so it stays tidy */
+@media (max-width: 1150px) {
+    .mascot-extra { width: 130px; right: 10px; }
+    .mascot-badge { display: none; }
+}
+/* Phones: the centered CTA needs the full width, so retire the peek */
+@media (max-width: 700px) {
+    .mascot-extra { display: none; }
+}
