@@ -576,3 +576,25 @@ a:focus-visible {
   outline: 2px solid var(--sky-yellow, #ffe605);
   outline-offset: 2px;
 }
+.local {
+  padding-top: 60px;
+  padding-bottom: 30px;
+}
+.contact-local h2 {
+    font-family: 'AGRESSIVE', sans-serif;
+    text-transform: uppercase;
+    font-size: 50px;
+    letter-spacing: 1px;
+    margin: 0 0 8px;
+    color: var(--blue);
+}
+.contact-local p {
+  font-family: 'Inter-Light.BETA.otf', sans-serif;
+  color: var(--ink);
+  font-size: 24px;
+}
+.map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
