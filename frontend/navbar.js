@@ -41,3 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.matches) setMenu(false);
   });
 });
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('cert-modal')?.classList.remove('open');
+});
