@@ -610,39 +610,58 @@ a:focus-visible,.sky-btn:focus-visible{outline:3px solid var(--blue);outline-off
     display: none;
     position: fixed;
     inset: 0;
-    z-index: 1000;
+    z-index: 2000;                 /* por encima del navbar */
     background: rgba(0, 0, 0, .85);
-    padding: 2rem;
-    justify-content: center;
-    align-items: center;
+    padding: clamp(1rem, 4vw, 2rem);
+    overflow-y: auto;              /* se puede desplazar si el PDF es más alto que la pantalla */
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 }
-.cert-modal.open { display: flex; }
- 
+.cert-modal.open {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;       /* nunca recorta el borde de arriba */
+}
+
 .cert-modal__content {
     position: relative;
     width: min(900px, 100%);
+    margin: auto;                  /* centra cuando cabe; deja hacer scroll cuando no */
 }
 .cert-modal__content iframe {
     width: 100%;
-    height: 80vh;
+    height: 80vh;                  /* fallback navegadores viejos */
+    height: 80svh;                 /* altura real del viewport en móvil */
+    max-height: 80dvh;
+    display: block;
     border: 3px solid var(--yellow);
     border-radius: 8px;
     background: #fff;
 }
+
+/* La X: SIEMPRE fija en la esquina de la pantalla, tocable y por encima de todo */
 .cert-modal__close {
-    position: absolute;
-    top: -18px;
-    right: -18px;
-    width: 44px;
-    height: 44px;
+    position: fixed;
+    top: max(12px, env(safe-area-inset-top));
+    right: max(12px, env(safe-area-inset-right));
+    left: auto;
+    bottom: auto;
+    z-index: 2010;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
     border: none;
     border-radius: 50%;
     background: var(--yellow);
     color: var(--black);
-    font-size: 20px;
+    font-size: 22px;
+    line-height: 1;
     cursor: pointer;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, .4);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .5);
 }
+.cert-modal__close:active { transform: scale(.94); }
+
 .cert-fallback {
     display: block;
     margin-top: 14px;
@@ -653,7 +672,6 @@ a:focus-visible,.sky-btn:focus-visible{outline:3px solid var(--blue);outline-off
 }
 .cert-fallback:hover { text-decoration: underline; }
 
-/* ---- Reusable GAF badge chip — drop it anywhere ---- */
 .gaf-badge {
     display: inline-flex;
     line-height: 0;
@@ -670,16 +688,15 @@ a:focus-visible,.sky-btn:focus-visible{outline:3px solid var(--blue);outline-off
     filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .4));
 }
 
-.gaf-badge--sm img { width: 64px; }
-.gaf-badge--md img { width: 96px; }
+.gaf-badge--sm img { width: 48px; }
+.gaf-badge--md img { width: 56px; }
 
 .footer-logo .gaf-badge { margin-top: 16px; }
 
 /* Mobile */
 @media (max-width: 600px) {
     .certificate { padding: 56px 1rem; }
-    .cert-modal { padding: 1rem; }
-    .cert-modal__content iframe { height: 70vh; }
+    .cert-modal__content iframe { height: 70svh; max-height: 70dvh; }
 }
 
 #testimonios {
@@ -688,7 +705,7 @@ a:focus-visible,.sky-btn:focus-visible{outline:3px solid var(--blue);outline-off
     background-size: cover;
 }
 .testimonio-inner h2 {
-    font-size: 52px;
+    font-size: clamp(30px, 9vw, 52px);
     font-family: 'AGRESSIVE', sans-serif;
     background: linear-gradient(180deg, #ffe27a 0%, var(--yellow) 45%, #c98f04 100%);
     -webkit-background-clip: text;

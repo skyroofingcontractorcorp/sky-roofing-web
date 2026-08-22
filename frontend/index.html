@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="about_us.css">
     <link rel="stylesheet" href="responsive.css">
     <link rel="stylesheet" href="branding.css">
+    <link rel="stylesheet" href="hero_layout.css">
 
     <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
     <link rel="icon" href="assets/favicon/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -56,9 +57,18 @@
     <main>
         <section class="hero">
             <h1 class="sr-only">Sky Roofing Contractor Corp — Roofing in Greater Pittsburgh, PA</h1>
+            <!-- Corner logo: pinned toward a corner of the hero (see hero_layout.css).
+                 To switch corners, change the "hero-logo--*" modifier below:
+                 hero-logo--tr (top-right, default) | hero-logo--tl (top-left)
+                 hero-logo--br (bottom-right)        | hero-logo--bl (bottom-left) -->
+            <img class="hero-logo hero-logo--tr" src="assets/logos/logo_skyroofing_1.png"
+                 alt="Sky Roofing Contractor Corp logo" width="1100" height="1022">
             <div class="hero-content">
-                <img class="hero-logo" src="assets/logos/logo_skyroofing_1.png"
-                     alt="Sky Roofing Contractor Corp logo" width="1100" height="1022">
+                <!-- Centered brand name (decorative: the accessible name already lives in the h1 above) -->
+                <p class="hero-name" aria-hidden="true">
+                    <span class="y">SKY</span> <span class="b">ROOFING</span><br>
+                    <span class="w">CONTRACTOR</span> <span class="y">CORP</span>
+                </p>
                 <p class="hero-eyebrow">Built with <b class="hl">integrity</b>. Protected by <b class="hl">quality</b>.</p>
                 <span class="hero-accent" aria-hidden="true"></span>
                 <div class="hero-cta">
@@ -248,17 +258,6 @@
                 </div>
             </div>
         </section>
-        <div id="cert-modal" class="cert-modal"
-            onclick="if(event.target===this) this.classList.remove('open')">
-            <div class="cert-modal__content">
-                <button class="cert-modal__close" aria-label="Close"
-                        onclick="document.getElementById('cert-modal').classList.remove('open')">✕</button>
-                <iframe src="docs/CERTIFIED_PLUS_CERTIFICATE.pdf#view=FitH"
-                        title="Sky Roofing Contractor Corp certificate"></iframe>
-                <a class="cert-fallback" href="docs/CERTIFIED_PLUS_CERTIFICATE.pdf"
-                target="_blank" rel="noopener">Open in a new tab</a>
-            </div>
-        </div>
         <section class="testimonio" id="testimonios">
             <div class="testimonio-inner">
                 <h2>What our clients say!</h2>
@@ -275,7 +274,7 @@
                 <div class="contact-info">
                     <p>
                         <img src="assets/iconos/location.svg" class="contact-icon" alt="location icon">
-                        <span>Address: 4211 Norther Pike, Monroeville, PA 15146</span>
+                        <span>Address: 4211 Northern Pike, Monroeville, PA 15146</span>
                     </p>
                     <p>
                         <img src="assets/iconos/mail.svg" class="contact-icon" alt="mail icon">
@@ -351,7 +350,7 @@
                 <h4>Contact Information</h4>
                 <p>
                     <img src="assets/iconos/location.svg" class="footer-icon" alt="location icon">
-                    <span>Address: 4211 Norther Pike, Monroeville, PA 15146</span>
+                    <span>Address: 4211 Northern Pike, Monroeville, PA 15146</span>
                 </p>
                 <p>
                     <img src="assets/iconos/mail.svg" class="footer-icon" alt="mail icon">
@@ -383,6 +382,17 @@
             <button class="atribuciones" id="atribuciones" onclick="window.location.href='legal.html'">Legal &amp; Credits</button>
         </div>
     </footer>
+    <div id="cert-modal" class="cert-modal"
+            onclick="if(event.target===this) this.classList.remove('open')">
+            <div class="cert-modal__content">
+                <button class="cert-modal__close" aria-label="Close"
+                        onclick="document.getElementById('cert-modal').classList.remove('open')">✕</button>
+                <iframe src="docs/CERTIFIED_PLUS_CERTIFICATE.pdf#view=FitH"
+                        title="Sky Roofing Contractor Corp certificate"></iframe>
+                <a class="cert-fallback" href="docs/CERTIFIED_PLUS_CERTIFICATE.pdf"
+                target="_blank" rel="noopener">Open in a new tab</a>
+            </div>
+        </div>
     <script src="barra_progreso.js"></script>
     <script src="navbar.js"></script>
 </body>

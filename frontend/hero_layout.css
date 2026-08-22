@@ -1,0 +1,72 @@
+/* ============================================================
+   hero_layout.css
+   Additive layer — centered brand name + corner logo in the hero.
+   Loads AFTER style.css / branding.css, so it overrides the
+   previously centered .hero-logo. Uses design tokens only.
+   ============================================================ */
+
+/* --- Centered brand name --------------------------------- */
+.hero-name {
+    margin: 0 0 0.2rem;
+    font-family: 'AGRESSIVE', 'Oswald', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.02;
+    letter-spacing: 0.03em;
+    font-size: clamp(2.2rem, 8vw, 5rem);
+    text-shadow: 0 4px 22px rgba(0, 0, 0, 0.55),
+                 0 2px 6px  rgba(0, 0, 0, 0.45);
+}
+/* Colours come from the shared .y / .b / .w spans (yellow / blue / white). */
+
+/* --- Corner logo ----------------------------------------- */
+/* Pull the logo out of the centered column and pin it to a corner.
+   The higher-specificity selector guarantees it overrides any earlier
+   centered styling coming from branding.css. */
+.hero .hero-logo {
+    position: absolute;
+    z-index: 2;
+    width: clamp(72px, 11vw, 132px);
+    height: auto;
+    filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.45));
+    animation: heroRise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: 0.1s;
+}
+
+/* Corner variants — horizontal inset matches the navbar padding,
+   and the top variants clear the fixed navbar height. */
+.hero-logo--tr { top: calc(var(--nav-h) + clamp(0.5rem, 2vw, 1.25rem)); right: clamp(1rem, 4vw, 3rem); }
+.hero-logo--tl { top: calc(var(--nav-h) + clamp(0.5rem, 2vw, 1.25rem)); left:  clamp(1rem, 4vw, 3rem); }
+.hero-logo--br { bottom: clamp(1.25rem, 4vw, 2.5rem); right: clamp(1rem, 4vw, 3rem); }
+.hero-logo--bl { bottom: clamp(1.25rem, 4vw, 2.5rem); left:  clamp(1rem, 4vw, 3rem); }
+
+/* --- Small screens --------------------------------------- */
+@media (max-width: 600px) {
+    .hero .hero-logo { width: clamp(56px, 18vw, 84px); }
+    .hero-name { letter-spacing: 0.02em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero .hero-logo { animation: none; }
+}
+
+/* --- Darken the background so the text pops --------------- */
+/* Single knob: raise --hero-veil for more darkness, lower it for less.
+   0 = no extra darkening, 1 = solid. Sweet spot ~0.20–0.35. */
+.hero { --hero-veil: 0.28; }
+
+.hero::after {
+    background:
+        /* Original directional gradient — kept intact, painted on top. */
+        linear-gradient(
+            to bottom,
+            rgba(0, 20, 35, 0.62) 0%,
+            rgba(0, 20, 35, 0.00) 26%,
+            rgba(0, 20, 35, 0.00) 46%,
+            rgba(0, 25, 45, 0.72) 82%,
+            var(--darkblue) 100%
+        ),
+        /* Flat veil underneath — adds an even layer of darkness across
+           the whole image, mainly visible where the gradient is clear. */
+        rgba(0, 12, 22, var(--hero-veil));
+}
