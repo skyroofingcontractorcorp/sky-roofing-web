@@ -1,0 +1,15 @@
+.hero { --hero-veil: 0.50; }
+
+@media (max-width: 1180px) {
+    .hero-script {
+        display: block;
+        top: calc(var(--nav-h) + clamp(0.4rem, 2vw, 1rem));
+        right: clamp(0.8rem, 4vw, 1.5rem);
+        bottom: auto;
+        left: auto;
+        text-align: right;
+        font-size: clamp(1.4rem, 7vw, 2.3rem);
+    }
+
+    .hero-rail { display: none; }
+}

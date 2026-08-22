@@ -191,7 +191,60 @@ a {
     gap: 1.4rem;
     max-width: 720px;
 }
+.y-hero {
+    background: linear-gradient(180deg, 
+        #FFF9D2 0%, 
+        #FFD633 45%, 
+        #7A4F00 50%,
+        #FFB900 52%, 
+        #FFE96B 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    
+    -webkit-text-stroke: 1px #4A2B00;
+    
+    filter: drop-shadow(2px 4px 2px rgba(0,0,0,0.8));
+    
+    font-weight: 900;
+}
+.b-hero {
+    background: linear-gradient(180deg, 
+        #8AEEFF 0%, 
+        #0077FF 45%, 
+        #00135C 50%,
+        #0044CC 52%, 
+        #5CB8FF 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 
+    -webkit-text-stroke: 0.5px #FFCC00;
+
+    filter: drop-shadow(0px 2px 0px #996600) drop-shadow(2px 5px 4px rgba(0,0,0,0.9));
+    
+    font-weight: 900;   
+}
+.w-hero {
+    background: linear-gradient(180deg, 
+        #FFFFFF 0%, 
+        #E0E5EC 45%, 
+        #5A697D 50%,
+        #A1B1C7 52%,
+        #FFFFFF 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    -webkit-text-stroke: 0.5px #FFCC00;
+
+    filter: drop-shadow(0px 2px 0px #996600) drop-shadow(1px 3px 3px rgba(0,0,0,0.8));
+    
+    font-weight: 900;
+}
 .hero-eyebrow {
     margin: 0;
     font-family: 'Oswald', sans-serif;
