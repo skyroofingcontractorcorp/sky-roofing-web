@@ -3,53 +3,58 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!form) return;
 
   const status = document.getElementById("quoteFormStatus");
-  const number = (form.dataset.whatsapp || "").replace(/\D/g, "");
-  if (!number) return;
+  const button = form.querySelector(".contact-form-submit");
+  const label = button ? button.querySelector("span") : null;
+  const idleText = label ? label.textContent : "";
 
-  const buildMessage = () => {
-    const data = new FormData(form);
-    const get = (key) => String(data.get(key) || "").trim();
-
-    return [
-      "Hello Sky Roofing! I'd like to request a free quote.",
-      "",
-      `*Name:* ${get("name")}`,
-      `*Email:* ${get("email")}`,
-      `*Subject:* ${get("subject")}`,
-      `*Cell phone:* ${get("phone")}`,
-      `*Interested in:* ${get("interest")}`,
-    ].join("\n");
+  const setSending = (sending) => {
+    if (!button) return;
+    button.disabled = sending;
+    if (label) label.textContent = sending ? "Sending…" : idleText;
   };
 
-  const showStatus = (url) => {
+  const showStatus = (text, isError) => {
     if (!status) return;
-    const link = document.createElement("a");
-    link.href = url;
-    link.target = "_blank";
-    link.rel = "noopener";
-    link.textContent = "Open WhatsApp";
-
-    status.textContent = "WhatsApp is opening with your message. Press Send there to finish. Didn't open? ";
-    status.appendChild(link);
+    status.textContent = text;
+    status.classList.toggle("is-error", Boolean(isError));
   };
 
-  form.addEventListener("submit", (e) => {
+  const showError = () => {
+    showStatus("Your request couldn't be sent. Please try again, or call us at ", true);
+    const tel = document.createElement("a");
+    tel.href = "tel:+14127378150";
+    tel.textContent = "412-737-8150";
+    status.append(tel, ".");
+  };
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     form.querySelectorAll("input[required]").forEach((el) => {
       if (!el.value.trim()) el.value = "";
     });
     if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    data.set("form-name", form.getAttribute("name"));
 
-    const url = `https://wa.me/${number}?text=${encodeURIComponent(buildMessage())}`;
+    setSending(true);
+    showStatus("");
 
-    const win = window.open(url, "_blank");
-    if (win) {
-      win.opener = null;
-    } else {
-      window.location.href = url;
+    try {
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(data).toString(),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+      form.reset();
+      showStatus("Request sent. Thank you! We'll be in touch soon.");
+    } catch (err) {
+      console.error("Quote form:", err);
+      showError();
+    } finally {
+      setSending(false);
     }
-
-    showStatus(url);
   });
 });

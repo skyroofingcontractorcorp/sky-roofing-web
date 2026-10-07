@@ -322,11 +322,14 @@
                 <h2>Contact Us</h2>
             </div>
             <div class="contact-form-wrap">
-                <form class="contact-form" id="quoteForm" data-whatsapp="14127378150"
-                      action="https://wa.me/14127378150" method="get" target="_blank" rel="noopener">
+                <form class="contact-form" id="quoteForm" name="quote" method="POST"
+                      data-netlify="true" netlify-honeypot="bot-field">
+                    <p class="contact-form-trap" hidden>
+                        <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+                    </p>
                     <div class="contact-form-head">
                         <h3>Request a free quote</h3>
-                        <p>Fill in your details and we'll open WhatsApp with your message ready to send.</p>
+                        <p>Tell us what you need and we'll get back to you with a free estimate.</p>
                     </div>
                     <div class="contact-form-grid">
                         <div class="contact-field">
@@ -362,7 +365,7 @@
                     </div>
                     <div class="contact-form-foot">
                         <button type="submit" class="contact-form-submit">
-                            <img src="assets/iconos/whatsapp.svg" alt="" aria-hidden="true"> Send on WhatsApp
+                            <img src="assets/iconos/mail.svg" alt="" aria-hidden="true"> <span>Send request</span>
                         </button>
                         <p class="contact-form-status" id="quoteFormStatus" role="status" aria-live="polite"></p>
                     </div>
